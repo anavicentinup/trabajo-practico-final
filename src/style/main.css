@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+.app {
+    height: 100vh; 
+    /* ocupe el 100% del ancho disponible */
+    background-color: green;
+    display: flex;
+}
+
+aside{
+    background-color: aquamarine;
+    width: 260px;
+}

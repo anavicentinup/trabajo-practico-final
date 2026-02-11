@@ -16,4 +16,23 @@
 aside{
     background-color: aquamarine;
     width: 260px;
+    /*padding es el espacio interno de un elemento.
+Es la distancia entre el contenido (texto, imagen, etc.) y el borde de la caja.*/
+    padding: 20px;
+  
+}
+
+section{
+    flex: 1;
+    /* flex:1 => ocupar todo el espacio restante */
+
+}
+/* aside style */
+li{
+    background-color: aliceblue;
+    /*margin-bottom es el espacio externo que se agrega DEBAJO de un elemento.*/
+    margin-bottom: 10px;
+}
+li small {
+    display: block;
 }

@@ -1,39 +1,59 @@
-import { useState } from "react"
-import { users } from "../services/mockApi"
+import { useEffect, useState } from "react"
+// import { users } from "../services/mockApi"
 
 
 const Aside = () => {
     const [search, setSearch] = useState("")
+    const [users, setUsers] = useState([])
+
+    const fetchingData = async () => {
+        try {
+            const response = await fetch(" https://dummyjson.com/users")
+            if (!response.ok) {
+                alert("fallo el pedido")//error en lo que esta buscando, "si existe la pagina" no hay lo que vos buscas.
+                return
+            }
+            const data = await response.json()
+            setUsers(data.users)
+        } catch (error) {
+            console.log(error.message)//error en la api, la ruta esta mal o no existe.
+        }
+    }
+    useEffect(() => { fetchingData() }, [])
 
     const handleChange = (e) => {
         setSearch(e.target.value)
     }
 
-    //filter()
-    //for()
     //forEach()
-    const filteredUsers = users.filter((user)=>user.name.toLowerCase().includes(search.toLowerCase()))
-  
+    //for()
+    //filter()
+    const filteredUsers = users.filter((user) => user.firstName.toLowerCase().includes(search.toLowerCase())
+                                            || user.lastName.toLowerCase().includes(search.toLowerCase()))
+   
 
-
-
-
-return (
-    <aside>
-        <h1>Chat Utn</h1>
-        <p>Estas buscando a {search}</p>
-        <input type="search" placeholder="Buscar Contactos" onChange={handleChange} />
-        <ul>
+    return (
+        <aside>
+            <h1>Chat Utn</h1>
+            <input className="search" type="search" placeholder="Buscar Contactos" onChange={handleChange} />
             {
-                filteredUsers.map((user) => (
-                    <li>{user.name}
-                        <small> {user.status} </small>
-                    </li>
-                ))
+                filteredUsers.length === 0 && <p className="not-found-text">"No se encontraron Contactos"</p>
             }
-        </ul>
-    </aside>
+            <ul>
+                {
+                    filteredUsers.map((user) => (
+                        <li key={user.id}>
+                            <img src={user.image} alt="" />
+                         <div>
+                               {user.firstName} {user.lastName}
+                            <small> {user.address.country} </small>
+                         </div>
+                        </li>
+                    ))
+                }
+            </ul>
+        </aside>
 
-)
+    )
 }
 export { Aside }

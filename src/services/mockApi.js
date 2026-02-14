@@ -36,7 +36,11 @@ const messages = [
     {id: 3 , author:"Ana",text: "hola emi, si decime...", time: "19:41" },
     {id: 4 , author:"Emily jonhson",text: "queria consultarte si podes venir mañana...", time: "19:42" },
     {id: 5 , author:"Emily jonhson",text: "vamos a festejar el cumple de gian", time: "19:42" },
-    {id: 6 , author:"Emily jonhson",text: "algo tranqui!", time: "19:43" }
+    {id: 6 , author:"Emily jonhson",text: "algo tranqui!", time: "19:43" },
+    {id: 7 , author:"Ana",text: "dale,si", time: "19:45" },
+    {id: 8 , author:"Ana",text: "me prendo!", time: "19:45" },
+    {id: 9 , author:"Ana",text: "ya tenes la torta?", time: "19:47" },
+    {id: 10 , author:"Ana",text: "sino, le puedo hacer yo", time: "19:47" }
 ]
 
 export {users,messages}

@@ -42,7 +42,9 @@ const Chat = ({ activeUser }) => {
    
     if (activeUser === null) {
         return (
-            <p>Selecciona un Usuario para charlar</p>
+            <section className="chatEmpty">
+                <p className="pEmpty"> Selecciona un Usuario para charlar</p>
+            </section>
         )
 
     }

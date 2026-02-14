@@ -1,15 +1,14 @@
-import { StrictMode } from 'react'
+import { StrictMode} from 'react'
 import { createRoot } from 'react-dom/client'
-import { Aside } from './components/Aside'
-import { Chat } from './components/Chat'
+import { App } from './components/App'
 
 import './style/main.css'
 
+
+
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <main className='app'>
-      <Aside />
-    <Chat />
-    </main>
+    <App />
   </StrictMode>,
 )

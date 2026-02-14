@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 // import { users } from "../services/mockApi"
 
 
-const Aside = () => {
+const Aside = ({onActiveUser}) => {
     const [search, setSearch] = useState("")
     const [users, setUsers] = useState([])
 
@@ -15,6 +15,8 @@ const Aside = () => {
             }
             const data = await response.json()
             setUsers(data.users)
+
+
         } catch (error) {
             console.log(error.message)//error en la api, la ruta esta mal o no existe.
         }
@@ -28,9 +30,19 @@ const Aside = () => {
     //forEach()
     //for()
     //filter()
-    const filteredUsers = users.filter((user) => user.firstName.toLowerCase().includes(search.toLowerCase())
-                                            || user.lastName.toLowerCase().includes(search.toLowerCase()))
+    const filteredUsers = users.filter((user) => {
+        const fullName = `${user.firstName} ${user.lastName}`
+
+        return fullName.toLowerCase().includes(search.toLowerCase())
+    })
+
+    const handleClick = (id) => {
+        onActiveUser(id)
    
+    }
+
+
+
 
     return (
         <aside>
@@ -42,12 +54,12 @@ const Aside = () => {
             <ul>
                 {
                     filteredUsers.map((user) => (
-                        <li key={user.id}>
+                        <li key={user.id} onClick={() => handleClick(user.id)}>
                             <img src={user.image} alt="" />
-                         <div>
-                               {user.firstName} {user.lastName}
-                            <small> {user.address.country} </small>
-                         </div>
+                            <div>
+                                {user.firstName} {user.lastName}
+                                <small> {user.address.country} </small>
+                            </div>
                         </li>
                     ))
                 }
@@ -56,4 +68,4 @@ const Aside = () => {
 
     )
 }
-export { Aside }
+export { Aside}
